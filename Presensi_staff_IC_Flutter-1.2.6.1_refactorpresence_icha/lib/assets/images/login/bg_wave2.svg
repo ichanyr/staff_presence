@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="132" viewBox="0 0 390 132">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_62" data-name="Rectangle 62" width="390" height="132" fill="#2196f3" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="bg_wave2" clip-path="url(#clip-path)">
+    <path id="Path_59" data-name="Path 59" d="M0,223.381l30,16c30,16,90,48,150,42.7,60-5.7,120-47.7,180-42.7s120,59,180,74.7c60,16.3,120-5.7,180-10.7s120,5,180,10.7a1020.858,1020.858,0,0,0,180,0c60-5.7,120-15.7,180-37.4,60-21.3,120-53.3,150-69.3l30-16v-96H0Z" transform="translate(-535 -188)" fill="#2196f3"/>
+  </g>
+</svg>

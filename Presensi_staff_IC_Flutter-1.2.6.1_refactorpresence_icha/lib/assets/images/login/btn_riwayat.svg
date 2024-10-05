@@ -1,0 +1,23 @@
+<svg id="btn_riwayat" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+    viewBox="0 0 100 100">
+    <rect id="Rectangle_24" width="100" height="100" rx="25" fill="#fff" />
+    <g id="Group_13" transform="translate(31.667 22.5)">
+        <path id="Union_1"
+            d="M8,55a8,8,0,0,1-8-8V8A8,8,0,0,1,8,0H28.667a8,8,0,0,1,8,8V47a8,8,0,0,1-8,8Z"
+            transform="translate(0 0)" fill="#0c71c3" />
+        <g id="Group_12" transform="translate(5.833 8.333)">
+            <rect id="Rectangle_27" width="25" height="2.5" rx="1.25" transform="translate(0)"
+                fill="#fff" />
+            <rect id="Rectangle_30" width="25" height="3.333" rx="1.667"
+                transform="translate(0 14.167)" fill="#fff" />
+            <rect id="Rectangle_32" width="25" height="2.5" rx="1.25"
+                transform="translate(0 29.167)" fill="#fff" />
+            <rect id="Rectangle_28" width="25" height="3.333" rx="1.667"
+                transform="translate(0 6.667)" fill="#fff" />
+            <rect id="Rectangle_29" width="25" height="3.333" rx="1.667"
+                transform="translate(0 21.667)" fill="#fff" />
+            <rect id="Rectangle_31" width="25" height="2.5" rx="1.25"
+                transform="translate(0 36.667)" fill="#fff" />
+        </g>
+    </g>
+</svg>

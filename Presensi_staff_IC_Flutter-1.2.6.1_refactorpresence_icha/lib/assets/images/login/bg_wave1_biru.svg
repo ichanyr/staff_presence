@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="479" viewBox="0 0 390 479">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_61" data-name="Rectangle 61" width="390" height="479" fill="#2196f3" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="bg_wave1_biru" clip-path="url(#clip-path)">
+    <g id="Group_1268" data-name="Group 1268">
+      <path id="Path_58" data-name="Path 58" d="M0,223.381l30,16c30,16,90,48,150,42.7,60-5.7,120-47.7,180-42.7s120,59,180,74.7c60,16.3,120-5.7,180-10.7s120,5,180,10.7a1020.858,1020.858,0,0,0,180,0c60-5.7,120-15.7,180-37.4,60-21.3,120-53.3,150-69.3l30-16v-96H0Z" transform="translate(-469 122.619)" fill="#2196f3"/>
+      <rect id="Rectangle_11" data-name="Rectangle 11" width="390" height="330" fill="#2196f3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg id="btn_presensi" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+    viewBox="0 0 100 100">
+    <rect id="Rectangle_14" width="100" height="100" rx="25" fill="#fff" />
+    <g id="Group_11" transform="translate(25 25)">
+        <path id="Subtraction_3"
+            d="M44,50H33.75V45.156h8.406a3,3,0,0,0,3-3V33.611H50V44A6.007,6.007,0,0,1,44,50ZM16.25,50H6a6.007,6.007,0,0,1-6-6V33.611H4.844v8.545a3,3,0,0,0,3,3H16.25V50ZM50,16.111H45.157V7.844a3,3,0,0,0-3-3H33.75V0H44a6.007,6.007,0,0,1,6,6V16.11Zm-45.157,0H0V6A6.007,6.007,0,0,1,6,0H16.25V4.844H7.844a3,3,0,0,0-3,3V16.11Z"
+            transform="translate(0 0)" fill="#0c71c3" />
+        <rect id="Rectangle_21" width="21.667" height="21.667" rx="6"
+            transform="translate(14.167 14.167)" fill="#0c71c3" />
+        <rect id="Rectangle_23" width="36.667" height="3.333" rx="1.667"
+            transform="translate(6.667 23.333)" fill="#0c71c3" />
+    </g>
+</svg>
