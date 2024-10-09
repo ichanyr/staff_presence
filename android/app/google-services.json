@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "886352270940",
+    "project_id": "presensi-staff-ic",
+    "storage_bucket": "presensi-staff-ic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886352270940:android:9d5694a2c8128f66c47899",
+        "android_client_info": {
+          "package_name": "com.ic.prensesistaffindonesiacollege"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886352270940-466cbd9hgbodrl4gfdtebdmatghtfc24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmjCBUpttYGlq51ye353rUDymL3JuNUhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886352270940-466cbd9hgbodrl4gfdtebdmatghtfc24.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886352270940-1c6cb9oco634pd6u2cau9brhnmv400si.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ic.prensesistaffindonesiacollege"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
