@@ -318,16 +318,13 @@ class PresensiQrController extends GetxController {
       barcode = barcodes2.rawContent;
 
       if (isOnline.value) {
+        // Jika online, langsung kirim presensi ke server
         await pushPresensiQr(barcode!, lat!, long!);
         showSuccessDialog(); // Tampilkan dialog sukses jika online
       } else {
+        // Jika offline, simpan presensi secara offline dan tampilkan dialog offline
         await saveOfflineAttendance(barcode!, lat!, long!);
-        // showOfflineDialog(); // Tampilkan dialog offline
-        if (offlinePresensiTime.value != null) {
-          showOfflineDialog();
-        } else {
-          print('Waktu presensi offline belum terisi');
-        }
+        showOfflineDialog(); // Tampilkan dialog offline setelah presensi disimpan
       }
     } on PlatformException catch (error) {
       errorQr = error.code == BarcodeScanner.cameraAccessDenied
@@ -414,12 +411,14 @@ class PresensiQrController extends GetxController {
   void sendPendingAttendanceData() async {
     final sp = await SharedPreferences.getInstance();
     List<String>? offlineData = sp.getStringList('offline_attendance');
+
     if (offlineData != null && offlineData.isNotEmpty) {
       String qrcode = offlineData[0];
       String lat = offlineData[1];
       String long = offlineData[2];
       String presensiTime = offlineData[3];
 
+      // Kirim data ke server setelah online
       await pushPresensiQr(qrcode, lat, long);
 
       // Tampilkan dialog setelah mengirim data presensi offline
@@ -431,7 +430,7 @@ class PresensiQrController extends GetxController {
         textConfirm: "OK",
       );
 
-      // Delete data after sending it to the server
+      // Hapus data setelah dikirim
       sp.remove('offline_attendance');
       print("Data presensi offline telah dikirim dan dihapus dari penyimpanan");
     }
