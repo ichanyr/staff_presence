@@ -195,13 +195,14 @@
 //       print("Data presensi offline telah dikirim dan dihapus dari penyimpanan");
 //     }
 //   }
-// }
+// }import 'dart:async';import 'dart:async';
 import 'dart:async';
 import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:presensi_ic_staff/ApiServices/ApiService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -214,12 +215,10 @@ enum CustomConnectivityResult {
 }
 
 class CustomConnectivity {
-  // Simulate checking for connectivity status
   Future<CustomConnectivityResult> checkConnectivity() async {
     return CustomConnectivityResult.wifi; // Replace with actual implementation
   }
 
-  // Simulate monitoring connectivity changes
   Stream<CustomConnectivityResult> get onConnectivityChanged async* {
     await Future.delayed(Duration(seconds: 1));
     yield CustomConnectivityResult.mobile;
@@ -320,9 +319,8 @@ class PresensiQrController extends GetxController {
       if (isOnline.value) {
         // Jika online, langsung kirim presensi ke server
         await pushPresensiQr(barcode!, lat!, long!);
-        showSuccessDialog(); // Tampilkan dialog sukses jika online
       } else {
-        // Jika offline, simpan presensi secara offline dan tampilkan dialog offline
+        // Jika offline, simpan presensi secara offline
         await saveOfflineAttendance(barcode!, lat!, long!);
         showOfflineDialog(); // Tampilkan dialog offline setelah presensi disimpan
       }
@@ -330,8 +328,19 @@ class PresensiQrController extends GetxController {
       errorQr = error.code == BarcodeScanner.cameraAccessDenied
           ? 'Izin kamera tidak diizinkan oleh pengguna'
           : 'Error: $error';
+      showErrorDialog(errorQr!);
+    } on ClientException catch (e) {
+      errorQr = 'Error: ClientException: ${e.message}';
+      // Hanya tampilkan dialog jika online
+      if (isOnline.value) {
+        showErrorDialog(errorQr!);
+      }
     } on Exception catch (e) {
       errorQr = 'Error: $e';
+      // Hanya tampilkan dialog jika online
+      if (isOnline.value) {
+        showErrorDialog(errorQr!);
+      }
     }
   }
 
@@ -339,6 +348,15 @@ class PresensiQrController extends GetxController {
     Get.defaultDialog(
       title: "Presensi Berhasil",
       middleText: "Presensi berhasil dilakukan.",
+      onConfirm: () => Get.back(),
+      textConfirm: "OK",
+    );
+  }
+
+  void showErrorDialog(String errorMessage) {
+    Get.defaultDialog(
+      title: "Error",
+      middleText: errorMessage,
       onConfirm: () => Get.back(),
       textConfirm: "OK",
     );
@@ -386,16 +404,7 @@ class PresensiQrController extends GetxController {
     offlinePresensiTime.value = DateTime.now(); // Save the timestamp
     await sp.setStringList('offline_attendance',
         [qrcode, lat, long, offlinePresensiTime.value!.toIso8601String()]);
-    print("Data presensi disimpan offline");
-  }
-
-  // Ambil waktu presensi offline dari SharedPreferences ketika online
-  Future<void> retrieveOfflineAttendance() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? offlineTime = prefs.getString('offline_time');
-    if (offlineTime != null) {
-      offlinePresensiTime.value = DateTime.parse(offlineTime);
-    }
+    print("Data presensi disimpan offline: $qrcode, $lat, $long");
   }
 
   void showOfflineDialog() {
@@ -412,6 +421,8 @@ class PresensiQrController extends GetxController {
     final sp = await SharedPreferences.getInstance();
     List<String>? offlineData = sp.getStringList('offline_attendance');
 
+    print("Data offline sebelum dikirim: $offlineData");
+
     if (offlineData != null && offlineData.isNotEmpty) {
       String qrcode = offlineData[0];
       String lat = offlineData[1];
@@ -421,7 +432,6 @@ class PresensiQrController extends GetxController {
       // Kirim data ke server setelah online
       await pushPresensiQr(qrcode, lat, long);
 
-      // Tampilkan dialog setelah mengirim data presensi offline
       Get.defaultDialog(
         title: "Presensi Terkirim",
         middleText:
@@ -435,4 +445,6 @@ class PresensiQrController extends GetxController {
       print("Data presensi offline telah dikirim dan dihapus dari penyimpanan");
     }
   }
+
+  
 }
